@@ -3,6 +3,7 @@ int gridSize = 10;
 
 size(800, 800);
 background(0);
+blendMode(ADD);
 
 int i =0;
 while (i < 10) {
