@@ -1,6 +1,7 @@
 PImage frog;
 int size;
 boolean onOff;
+String density = "@@@@@@@@@@@@%%%%%%%%#########********+++++++++====";
 
 void setup () {
   size(612, 408);
@@ -26,6 +27,21 @@ void draw () {
       float b = 255 - blue   (frog.pixels[loc]);
       float bright = ((0.3 * r) + (0.59 * g) + (0.11 * b));
 
+      float len = density.length();
+      int charIndex = floor(map(bright, 0, 255, 0, len));
+
+
+      if ((bright >= 0 && bright < 20)) {
+        beginShape(LINES);
+        // do nothing
+        endShape();
+      } else if (bright > 20) {
+        beginShape(LINES);
+        textSize((bright / size) / size);
+        text("e", x, y);
+        endShape();
+      }
+      
       if ((bright >= 0 && bright < 20)) {
         beginShape(LINES);
         // do nothing
@@ -56,6 +72,13 @@ void draw () {
   }
   frog.updatePixels();
 
+  if (onOff) {
+    endRecord();
+    onOff = false;
+  }
   println(n);
 }
 
+void mousePressed() {
+  onOff = true;
+}
