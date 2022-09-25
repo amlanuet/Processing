@@ -1,11 +1,10 @@
 PImage frog;
 int size;
-boolean onOff;
-//String density = "@@@@@@@@@@@@%%%%%%%%#########********+++++++++====";
+String density = "@@@@@@@@@@@@%%%%%%#######********+++++====";
 
 void setup () {
   size(612, 408);
-  frog = loadImage("frog.jpg");
+  frog = loadImage("frog2.jpg");
   background(0);
 }
 
@@ -27,8 +26,8 @@ void draw () {
       float b = 255 - blue   (frog.pixels[loc]);
       float bright = ((0.3 * r) + (0.59 * g) + (0.11 * b));
 
-      //float len = density.length();
-      //int charIndex = floor(map(bright, 0, 255, 0, len));
+      float len = density.length();
+      int charIndex = floor(map(bright, 0, 255, 0, len -1));
 
 
       if ((bright >= 0 && bright < 20)) {
@@ -38,31 +37,10 @@ void draw () {
       } else if (bright > 20) {
         beginShape(LINES);
         textSize((bright / size) / size);
-        text("e", x, y);
+        text(density.charAt(charIndex), x, y);
         endShape();
       }
       
-      if ((bright >= 0 && bright < 20)) {
-        beginShape(LINES);
-        // do nothing
-        endShape();
-      } else if ((bright > 20 && bright < 85)) {
-        beginShape(LINES);
-        textSize((bright / size) / size);
-        text("e", x, y);
-        endShape();
-      } else if ((bright > 85 && bright < 170)) {
-        beginShape(LINES);
-        textSize((bright / size) / size);
-        text("e", x, y);
-        endShape();
-      } else if ((bright > 170 && bright < 255)) {
-        beginShape(LINES);
-        textSize((bright / size) / size);
-        text("e", x, y);
-        endShape();
-      }
-
       y = y + int(size) +1;
       n = n+1;
     }
@@ -72,13 +50,5 @@ void draw () {
   }
   frog.updatePixels();
 
-  if (onOff) {
-    endRecord();
-    onOff = false;
-  }
   println(n);
-}
-
-void mousePressed() {
-  onOff = true;
 }
