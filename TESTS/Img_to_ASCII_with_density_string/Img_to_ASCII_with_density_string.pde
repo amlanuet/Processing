@@ -4,7 +4,7 @@ String density = "@@@@@@@@@@@@%%%%%%#######********+++++====";
 
 void setup () {
   size(612, 408);
-  frog = loadImage("frog2.jpg");
+  frog = loadImage("frog.jpg");
   background(0);
 }
 
@@ -13,7 +13,7 @@ void draw () {
   float n = 0;
   //image(frog, 0, 0);
   loadPixels();
-  background(0);
+  background(255);
   frog.loadPixels();
 
   size = 5;
@@ -27,7 +27,7 @@ void draw () {
       float bright = ((0.3 * r) + (0.59 * g) + (0.11 * b));
 
       float len = density.length();
-      int charIndex = floor(map(bright, 0, 255, 0, len -1));
+      int charIndex = floor(map(bright, 0, 255, len -1, 0));
 
 
       if ((bright >= 0 && bright < 20)) {
@@ -36,7 +36,8 @@ void draw () {
         endShape();
       } else if (bright > 20) {
         beginShape(LINES);
-        textSize((bright / size) / size);
+        fill(color(0));
+        textSize((bright / size) / (size * 0.76));
         text(density.charAt(charIndex), x, y);
         endShape();
       }
