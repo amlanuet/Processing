@@ -6,13 +6,13 @@ class Mover {
   float mass;
 
   Mover() {
-    position = new PVector(random(width), random(height));
+    position = new PVector(random(width), height / 2);
     velocity = new PVector(0, 0);
     acceleration = new PVector(0, 0);
     mass = random(1, 2);
   }
 
-  //Newton's 2nd law (the beginning)
+  //Newton's 2nd law with mass
   void applyForce(PVector force) {
     PVector copyForce = PVector.div(force, mass);
     acceleration.add(copyForce);

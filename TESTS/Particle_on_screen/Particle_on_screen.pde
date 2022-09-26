@@ -7,17 +7,23 @@ void setup() {
     movers[i] = new Mover();
   }
 }
+void mousePressed() {
+  for (Mover mover : movers) {
+    PVector wind = new PVector(0.2, 0);
+    mover.applyForce(wind);
+  }
+}
 
 void draw() {
   background(255);
 
   for (Mover mover : movers) {
 
-    PVector gravity = new PVector(0, 0.3);
+    PVector gravity = new PVector(0, 0.2);
+    gravity.mult(mover.mass);
     mover.applyForce(gravity);
 
-    PVector wind = new PVector(0.2, 0);
-    mover.applyForce(wind);
+
 
     mover.update();
     mover.checkEdges();
