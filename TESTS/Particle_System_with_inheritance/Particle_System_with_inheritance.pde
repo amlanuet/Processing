@@ -7,7 +7,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(220);
   for (ParticleSystem ps : systems) {
     ps.run();
     ps.addParticle();
