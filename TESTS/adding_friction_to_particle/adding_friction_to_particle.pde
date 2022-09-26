@@ -16,8 +16,6 @@ void draw() {
     PVector gravity = new PVector(0, 0.1);
     gravity.mult(mover.mass);
     mover.applyForce(gravity);
-    PVector wind = new PVector(0.2, 0);
-    mover.applyForce(wind);
 
     if (mousePressed) {
       PVector friction = mover.velocity.get();
