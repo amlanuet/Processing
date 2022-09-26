@@ -11,6 +11,7 @@ void draw() {
   particles.add(new Particle(new PVector(width/2, 50)));
 
   for (int i = particles.size()-1; i >= 0; i--) {
+    println(i);
     Particle p = particles.get(i);
     p.run();
     if (p.isDead()) {
