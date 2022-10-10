@@ -15,28 +15,32 @@ import org.jbox2d.collision.shapes.*; // jbox2d
 import org.jbox2d.common.*; // jbox2d
 import org.jbox2d.dynamics.*; // jbox2d
 import java.util.Collections;
+import java.awt.*;
 
+java.awt.Frame frame;
+java.awt.Canvas canvas;
 
 ASCIIWindow ASCII;
 KinectPhysicsWindow KinectPhysics;
 
 Button btn1;
 Button btn2;
+Button btnclose;
 
 
 void setup() {
-  PFont font = createFont("Anonymous.ttf", 1);
-
-
-  size(1920, 1080);
-  btn1 = new Button( width/2-150, height/2, 100, 100, "ASCII" );
-  btn2 = new Button( width/2+50, height/2, 100, 100, "Kinect Physics" );
+  fullScreen();
+  surface.setAlwaysOnTop(false);
+  btn1 = new Button( width/2-150, height/2, 100, 100, "ASCII", this);
+  btn2 = new Button( width/2+50, height/2, 100, 100, "Kinect Physics", this);
+  btnclose = new Button(10, 10, 100, 100, "EXIT", this);
 }
 
 void draw() {
-  background(255, 0, 0);
+  background(0);
   btn1.buttonDisplay();
   btn2.buttonDisplay();
+  btnclose.buttonDisplay();
 }
 
 
@@ -46,5 +50,8 @@ void mousePressed() {
   }
   if (btn2.hasClicked()) {
     KinectPhysics = new KinectPhysicsWindow();
+  }
+  if (btnclose.hasClicked()) {
+    exit();
   }
 }

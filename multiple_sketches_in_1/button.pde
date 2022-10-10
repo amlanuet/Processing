@@ -1,32 +1,34 @@
 class Button {
 
-  final int COLOR_STATE0 = color(238, 96, 85);
+  final int COLOR_STATE0 = color(170, 246, 131);
   final int COLOR_STATE1 = color(10, 220, 80);
 
   int buttonX, buttonY, buttonWidth, buttonHeight;
   boolean overButton, buttonOn;
   String buttonLabel;
+  PApplet buttonParent;
 
-  Button(int tempbuttonX, int tempbuttonY, int tempbuttonWidth, int tempbuttonHeight, String tempbuttonLabel) {
+  Button(int tempbuttonX, int tempbuttonY, int tempbuttonWidth, int tempbuttonHeight, String tempbuttonLabel, PApplet parent) {
     buttonX = tempbuttonX;
     buttonY = tempbuttonY;
     buttonWidth = tempbuttonWidth;
     buttonHeight = tempbuttonHeight;
     buttonLabel = tempbuttonLabel;
+    buttonParent = parent;
   }
 
   void buttonDisplay() {
-    fill(COLOR_STATE0);
-    if (isOver(mouseX, mouseY)) {
-      stroke(0);
-      strokeWeight(2);
+    buttonParent.fill(COLOR_STATE0);
+    if (isOver(buttonParent.mouseX, buttonParent.mouseY)) {
+      buttonParent.stroke(0);
+      buttonParent.strokeWeight(2);
     } else {
-      noStroke();
+      buttonParent.noStroke();
     }
-    rect(buttonX, buttonY, buttonWidth, buttonHeight);
-    fill( 0);//black for text
-    textAlign(CENTER);
-    text( buttonLabel, buttonX + buttonWidth/2, buttonY + (buttonHeight/2));
+    buttonParent.rect(buttonX, buttonY, buttonWidth, buttonHeight);
+    buttonParent.fill( 0);//black for text
+    buttonParent.textAlign(CENTER);
+    buttonParent.text( buttonLabel, buttonX + buttonWidth/2, buttonY + (buttonHeight/2));
   }
 
   boolean isOver(int x, int y) {
@@ -34,7 +36,7 @@ class Button {
   }
 
   boolean hasClicked() {
-    boolean changeState = isOver(mouseX, mouseY);
+    boolean changeState = isOver(buttonParent.mouseX, buttonParent.mouseY);
     if (changeState) {
       buttonOn = !buttonOn;
     }

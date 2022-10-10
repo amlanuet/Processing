@@ -8,21 +8,26 @@ float size = 5;
 float skip = 5;
 //BUFFER ARR2Y TO CLEAN DE PIXLES
 PImage depthToColorImg;
-
+Button btnclose2;
 
 class ASCIIWindow extends PApplet {
   ASCIIWindow() {
     super();
+    loop();
     PApplet.runSketch(new String[] {this.getClass().getSimpleName()}, this);
   }
   public void settings() {
-    size(1920, 1080);
+    fullScreen();
   }
 
   void setup() {
+    //start the prgram in the foreground
+    surface.setAlwaysOnTop(true);
+    //PFont font = createFont("anonymous.ttf", 1);
+    btnclose2 = new Button(10, 10, 100, 100, "Dashboard", this);
+
 
     //textFont(font, 128);
-
     depthZero    = new int[ KinectPV2.WIDTHDepth * KinectPV2.HEIGHTDepth];
 
     //SET THE ARRAY TO 0s
@@ -46,7 +51,7 @@ class ASCIIWindow extends PApplet {
 
   void draw() {
     background(0);
-
+    btnclose2.buttonDisplay();
     size = 3;
 
     float [] mapDCT = kinect.getMapDepthToColor(); // 434176
@@ -82,6 +87,7 @@ class ASCIIWindow extends PApplet {
           float col = map(depthRaw[(valYDepth * int(skip)) * 512 + valXDepth], 0, 4500, 255, 0);
           float len = (density.length() - 1);
           int charIndex = floor(map(col, 0, 255, len, 0));
+          fill(255);
           if ((col >= 0 && col < 5)) {
             beginShape(LINES);
             // do nothing
@@ -97,17 +103,20 @@ class ASCIIWindow extends PApplet {
       }
     }
     textSize(10);
-    text("fps: "+frameRate, 50, 50);
+    text("fps: "+frameRate, 50, 150);
   }
 
   void mousePressed() {
     println("mousePressed in ASCIIWindow");
+    if (btnclose2.hasClicked()) {
+      closeWindow();
+    }
   }
 
-  void exit()
-  {
-    dispose();
-    ASCII = null;
+  void closeWindow() {
+    Frame frame = (javax.swing.JFrame) ((processing.awt.PSurfaceAWT.SmoothCanvas) surface.getNative()).getFrame();
+    frame.dispose();
+    noLoop();
   }
 
   final void setDefaultClosePolicy(PApplet pa, boolean keepOpen) {
