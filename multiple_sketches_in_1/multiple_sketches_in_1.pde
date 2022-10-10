@@ -29,8 +29,8 @@ void setup() {
 
 
   size(1920, 1080);
-  btn1 = new Button( 10, 10, 100, 100, "ASCII" );
-  btn2 = new Button( 120, 10, 100, 100, "Kinect Physics" );
+  btn1 = new Button( width/2-150, height/2, 100, 100, "ASCII" );
+  btn2 = new Button( width/2+50, height/2, 100, 100, "Kinect Physics" );
 }
 
 void draw() {
