@@ -1,6 +1,6 @@
 class Button {
 
-  final int COLOR_STATE0 = color(255, 80, 10);
+  final int COLOR_STATE0 = color(238, 96, 85);
   final int COLOR_STATE1 = color(10, 220, 80);
 
   int buttonX, buttonY, buttonWidth, buttonHeight;
@@ -16,10 +16,7 @@ class Button {
   }
 
   void buttonDisplay() {
-    if (buttonOn)
-      fill(COLOR_STATE0);
-    else
-      fill(COLOR_STATE1);
+    fill(COLOR_STATE0);
     if (isOver(mouseX, mouseY)) {
       stroke(0);
       strokeWeight(2);
