@@ -1,7 +1,6 @@
 import KinectPV2.*;
 
 KinectPV2 kinect;
-Button closebtn;
 
 String density = "@@@@@@@@%%%%%%########*******++++++++========------";
 int [] depthZero;
@@ -21,7 +20,6 @@ class ASCIIWindow extends PApplet {
   }
 
   void setup() {
-    closebtn = new Button( width/2-150, height/2, 100, 100, "close" );
 
     //textFont(font, 128);
 
