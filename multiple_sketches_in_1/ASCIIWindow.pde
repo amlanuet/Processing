@@ -24,7 +24,7 @@ class ASCIIWindow extends PApplet {
     //start the prgram in the foreground
     surface.setAlwaysOnTop(true);
     //PFont font = createFont("anonymous.ttf", 1);
-    btnclose2 = new Button(10, 10, 100, 100, "Dashboard", this);
+    btnclose2 = new Button(10, 10, 249, 70, "Dashboard", this);
 
 
     //textFont(font, 128);
@@ -51,7 +51,8 @@ class ASCIIWindow extends PApplet {
 
   void draw() {
     background(0);
-    btnclose2.buttonDisplay();
+    image(p1, 10, 10);
+    //btnclose2.buttonDisplay();
     size = 3;
 
     float [] mapDCT = kinect.getMapDepthToColor(); // 434176

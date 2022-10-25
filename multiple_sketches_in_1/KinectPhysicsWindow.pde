@@ -64,7 +64,7 @@ class KinectPhysicsWindow extends PApplet {
   boolean mirror = false;
 
   void setup() {
-    btncloseKinect = new Button(10, 10, 100, 100, "Dashboard", this);
+    btncloseKinect = new Button(10, 10, 249, 70, "Dashboard", this);
     //start the prgram in the foreground
     surface.setAlwaysOnTop(true);
     // it's possible to customize this, for example 1920x1080
@@ -103,7 +103,8 @@ class KinectPhysicsWindow extends PApplet {
 
   void draw() {
     background(bgColor);
-    btncloseKinect.buttonDisplay();
+    //btncloseKinect.buttonDisplay();
+    image(p1, 10, 10);
     //image(kinect.getBodyTrackImage(), 512, 0);
     // put the image into a PImage
     cam = kinect.getBodyTrackImage();
