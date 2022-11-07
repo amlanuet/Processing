@@ -145,7 +145,7 @@ class ASCIIWindow extends PApplet {
           f.removeWindowListener(wl);
 
       f.setDefaultCloseOperation(keepOpen?
-        f.DO_NOTHING_ON_CLOSE : f.DISPOSE_ON_CLOSE);
+        javax.swing.JFrame.DO_NOTHING_ON_CLOSE : javax.swing.JFrame.DISPOSE_ON_CLOSE);
     }
   }
 }
