@@ -110,7 +110,7 @@ class TrackingWindow extends PApplet {
   drawBlobsAndEdges(true,blob);
 
   stroke(255);
-  text(frameRate, width-150, height - 50);
+  text(frameRate, 50, height - 50);
   image(p1, 10, 10);
   }
   

@@ -104,7 +104,7 @@ class ASCIIWindow extends PApplet {
       }
     }
     textSize(10);
-    text("fps: "+frameRate, 50, 150);
+    text("fps: "+frameRate, 50, height-50);
   }
 
   void mousePressed() {
