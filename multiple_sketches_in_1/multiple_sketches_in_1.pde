@@ -22,22 +22,26 @@ java.awt.Canvas canvas;
 
 ASCIIWindow ASCII;
 KinectPhysicsWindow KinectPhysics;
+TrackingWindow TrackConf;
 
 Button btn1;
 Button btn2;
+Button btn3;
 Button btnclose;
-PImage p0, p1, p2, p3;
+PImage p0, p1, p2, p3, p4;
 
 void setup() {
   fullScreen();
   surface.setAlwaysOnTop(false);
   btn1 = new Button( (width/2)-160, height/2, 164, 70, "ASCII", this);
   btn2 = new Button( (width/2)+10, height/2, 196, 70, "Kinect Physics", this);
+  btn3 = new Button( (width/2)-160, height/2 + 75, 320, 70, "Tracking Config", this);
   btnclose = new Button(10, 10, 146, 70, "EXIT", this);
   p0 = loadImage("data/button_ascii.png");
   p1 = loadImage("data/button_dashboard.png");
   p2 = loadImage("data/button_exit.png");
   p3 = loadImage("data/button_physics.png");
+  p4 = loadImage("data/button_tracking-config.png");
 }
 
 void draw() {
@@ -48,6 +52,7 @@ void draw() {
   image(p3, (width/2)+10, height/2);
   //btnclose.buttonDisplay();
   image(p2, 10, 10);
+  image(p4, width/2-160, height/2 + 75);
 }
 
 
@@ -57,6 +62,9 @@ void mousePressed() {
   }
   if (btn2.hasClicked()) {
     KinectPhysics = new KinectPhysicsWindow();
+  }
+  if (btn3.hasClicked()) {
+    TrackConf = new TrackingWindow();
   }
   if (btnclose.hasClicked()) {
     exit();
